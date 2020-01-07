@@ -1,0 +1,56 @@
+
+<style>
+    body{
+        background:linear-gradient(#947EB0,#766C7F);
+        width:1260px;
+        margin: auto;
+    }
+    header{
+        background-image:url("static/login_reg_app/images/header.jpg");
+        height: 200px;
+    }
+    #logout{
+        margin-right: 20px;
+        float: right;
+        vertical-align: top;
+        
+    }
+    h1{
+        margin-left: 170px;
+    }
+    #top{
+        text-align:center;
+    }
+    #chalList{
+        padding: 5px;
+        margin: 2px;
+        color:white;
+        background: linear-gradient(grey, rgb(52, 41, 55));
+        text-align: center;
+        width: 400px;
+        border-radius: 5px;
+        display:inline-block;
+    }
+</style>
+
+<html>
+    <body>
+        <header>
+            
+        </header>
+        <div id="top">
+            <button id="logout" onclick="window.location.href = '/logout'">Log Out</button>
+            <button id="logout" onclick="window.location.href = '/account'">My Profile</button>
+            <h1>Welcome to LoLStatTracker, {{name}}!</h1>
+            <p>Here you can view the current top 100 players in the North American region</p>
+        </div>
+        <br>
+        {% for i in api %}
+            <p id="chalList">
+                {{i.0}}
+                <button onclick="window.location.href = 'player/{{i.1}}'">View</button>
+            </p>
+        {% endfor %}
+        
+    </body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+    <style>
+        #left{
+            display:inline-block;
+            width:400px;
+        }
+        #right{
+            vertical-align: top;
+            display:inline-block;
+            width:400px;
+        }
+    </style>
+
+    <main>
+        <div id="left">
+        <h1>Registration</h1>
+        <form method="POST" action="/register" name = "register">
+            {% csrf_token %}
+            First Name <input type="text" name=first_name><br>
+            Last Name <input type="text" name="last_name"><br>
+            Summoner Name <input type="text" name="summoner_name"><br>
+            Email <input type="text" name="email"><br>
+            Password <input type="password" name="password"><br>
+            Confirm PW <input type="password" name="confirm_password"><br>
+            <input type="hidden" value="regForm" name="formType">
+            <br><input type="submit" value="Register">
+        </form>
+        {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+        </ul>
+        {% endif %}
+        </div>
+        <div id="right">
+            <h1>Login</h1>
+            <form method="POST" action="/login" name = "login">
+                {% csrf_token %}
+                Email <input type="text" name=email><br>
+                Password <input type="password" name="password"><br>
+                <input type="hidden" value="loginForm" name="formType">
+                <br><input type="submit" value="Login">
+            </form>
+            </div>
+    </main>
+</html> 

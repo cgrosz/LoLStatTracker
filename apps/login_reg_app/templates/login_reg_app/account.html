@@ -1,0 +1,51 @@
+<style>
+        body{
+            background:linear-gradient(#947EB0,#766C7F);
+            width:1260px;
+            margin: auto;
+        }
+        body header{
+            background-image: url("static/login_reg_app/images/header1.jpg");
+            height: 200px;
+        }
+        #top{
+            text-align:center;
+        }
+        #chalList{
+            padding: 5px;
+            margin: auto;
+            margin-top: 5px;
+            color:white;
+            background: linear-gradient(grey, rgb(52, 41, 55));
+            text-align: center;
+            width: 400px;
+            border-radius: 5px;
+        }
+    </style>
+        
+        <html>
+            <body>
+                <header>
+                    
+                </header>
+                <div id="top">
+                    <h1>{{name}}'s Stats</h1>
+                    <h3>Welcome to your profile, {{first_name}}</h3>
+                </div>
+                <div id="matches">
+                    {% for match in matches %}
+                        <div id="chalList">
+                        <p>Role: {{match.lane}}</p>
+                        <p>Champion: {{match.champion}}</p>
+                        <p>Queue Type: {{match.role}}</p>
+                        <p>Season: {{match.season}}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <br>
+                {% for i in api %}
+                    <p id="chalList">{{i}}</p>
+                {% endfor %}
+                <a href="/logout">Log Out</a>
+            </body>
+        </html>
